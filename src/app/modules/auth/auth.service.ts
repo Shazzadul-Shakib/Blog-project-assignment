@@ -4,7 +4,11 @@ import { User } from './auth.model';
 // ----- register user ----- //
 const registerUserService = async (payload: TUser) => {
   const result = await User.create(payload);
-  return result;
+  return {
+    _id: result._id,
+    name: result.name,
+    email: result.email,
+  };
 };
 
 // ----- export auth services ----- //

@@ -46,6 +46,7 @@ export const globalErrorHandler: ErrorRequestHandler = (
   res.status(statusCode).json({
     success: false,
     message,
+    statusCode,
     error,
     stack: config.NODE_ENV === 'development' ? err?.stack : null,
   });
