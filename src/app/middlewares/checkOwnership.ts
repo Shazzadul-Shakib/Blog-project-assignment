@@ -11,7 +11,7 @@ export const checkOwnership = CatchAsync(
 
     const resource = await Blog.findById(resourceId);
     if (!resource) {
-      throw new AppError(httpStatus.NOT_FOUND, 'Resource not found');
+      throw new AppError(httpStatus.NOT_FOUND, 'Blog not found');
     }
 
     if (resource?.author?.toString() !== loggedInUserId?.toString()) {

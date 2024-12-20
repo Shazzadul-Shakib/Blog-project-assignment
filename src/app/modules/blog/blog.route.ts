@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import { blogControllers } from './blog.controller';
 import { validateRequest } from '../../middlewares/validateRequest';
-import { blogValidationSchema } from './blog.validation';
+import {
+  blogValidationSchema,
+  updateBlogValidationSchema,
+} from './blog.validation';
 import { authGuard } from '../../middlewares/authGuard';
 import { USER_ROLE } from '../auth/auth.constant';
 import { checkOwnership } from '../../middlewares/checkOwnership';
@@ -23,5 +26,12 @@ blogRoutes.patch(
   '/:id',
   authGuard(USER_ROLE.user),
   checkOwnership,
+  validateRequest({ body: updateBlogValidationSchema }),
   blogControllers.updateBlog,
+);
+blogRoutes.delete(
+  '/:id',
+  authGuard(USER_ROLE.user),
+  checkOwnership,
+  blogControllers.deleteBlog,
 );
