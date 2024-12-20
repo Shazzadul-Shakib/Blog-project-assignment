@@ -4,7 +4,7 @@ import { blogServices } from './blog.service';
 import httpStatus from 'http-status-codes';
 
 // ----- create blog -----//
-const creteBlog = CatchAsync(async (req, res) => {
+const createBlog = CatchAsync(async (req, res) => {
   const result = await blogServices.createBlogService(req.body,req.user);
   SendResponse(res, {
     success: true,
@@ -25,8 +25,20 @@ const getAllBlogs = CatchAsync(async (req, res) => {
   });
 });
 
+// ----- update blog -----//
+const updateBlog = CatchAsync(async (req, res) => {
+  const result = await blogServices.updateBlogService(req.body);
+  SendResponse(res, {
+    success: true,
+    message: 'Blog updated successfully',
+    statusCode: httpStatus.OK,
+    data: result,
+  });
+});
+
 // ----- export blog controllers ----- //
 export const blogControllers = {
-  creteBlog,
+  createBlog,
   getAllBlogs,
+  updateBlog,
 };

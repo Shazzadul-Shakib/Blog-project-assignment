@@ -19,8 +19,20 @@ const getAllBlogService = async () => {
   return result;
 };
 
+// ----- update blog ----- //
+const updateBlogService = async (payload: TBlog) => {
+  console.log({payload})
+  // const newPayload = { ...payload, author: user?._id };
+  // const result = (await Blog.create(newPayload)).populate(
+  //   'author',
+  //   '_id name email',
+  // );
+  // return result;
+};
+
 // ----- export blog services ----- //
 export const blogServices = {
   createBlogService,
   getAllBlogService,
+  updateBlogService,
 };
