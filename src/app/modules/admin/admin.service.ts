@@ -1,11 +1,11 @@
 import AppError from '../../errorHandlers/AppError';
 import { User } from '../auth/auth.model';
 import httpStatus from 'http-status-codes';
+import { Blog } from '../blog/blog.model';
 
 // ----- block user ----- //
 const blockUserService = async (userId: string) => {
   const user = await User.isUserExistsById(userId);
-  console.log(user);
   //   ----- check if user exists ----- //
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND, 'User not found');
@@ -30,18 +30,21 @@ const blockUserService = async (userId: string) => {
   return result;
 };
 
-// ----- block user ----- //
-// const blockUserService = async (userId: string) => {
-//   // ----- check if user exists ----- //
-//   if (!User.isUserExistsById(userId)) {
-//     throw new AppError(httpStatus.NOT_FOUND, 'User not found');
-//   }
+// ----- delete blog ----- //
+const deleteBlogService = async (blogId: string) => {
+  const blog = await Blog.isBlogExistsById(blogId);
+  
+  //   ----- check if blog exists ----- //
+  if (!blog) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Blog not found');
+  }
 
-//   const result = await User.findByIdAndDelete(userId);
-//   return result;
-// };
+  const result = await Blog.findByIdAndDelete(blogId);
+  return result;
+};
 
 // ----- export admin services ----- //
 export const adminServices = {
   blockUserService,
+  deleteBlogService,
 };

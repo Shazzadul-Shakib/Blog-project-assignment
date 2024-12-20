@@ -10,3 +10,8 @@ adminRoutes.post(
   authGuard(USER_ROLE.admin),
   adminControllers.blockUser,
 );
+adminRoutes.delete(
+  '/blogs/:id',
+  authGuard(USER_ROLE.admin),
+  adminControllers.deleteBlog,
+);
