@@ -9,8 +9,20 @@ const registerUser = CatchAsync(async (req, res) => {
 
   SendResponse(res, {
     success: true,
-    statusCode: httpStatus.OK,
     message: 'User registered successfully',
+    statusCode: httpStatus.OK,
+    data: result,
+  });
+});
+
+// ----- login user ----- //
+const loginUser = CatchAsync(async (req, res) => {
+  const result = await userServices.loginUserService(req.body);
+
+  SendResponse(res, {
+    success: true,
+    message: 'Login successful',
+    statusCode: httpStatus.OK,
     data: result,
   });
 });
@@ -18,4 +30,5 @@ const registerUser = CatchAsync(async (req, res) => {
 // ----- export controllers ----- //
 export const userControllers = {
   registerUser,
+  loginUser
 };

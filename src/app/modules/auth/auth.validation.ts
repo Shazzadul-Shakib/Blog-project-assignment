@@ -15,3 +15,14 @@ export const userValidationSchema = z.object({
   role: z.enum(['admin', 'user']).optional(),
   isBlocked: z.boolean().optional(),
 });
+
+export const userLoginValidationSchema = z.object({
+  email: z
+    .string({
+      required_error: 'Email is required',
+    })
+    .email('Invalid email address'),
+  password: z.string({
+    required_error: 'Password is required',
+  }),
+});
