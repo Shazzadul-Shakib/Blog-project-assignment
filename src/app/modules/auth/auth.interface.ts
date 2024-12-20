@@ -1,4 +1,5 @@
 import { Model } from 'mongoose';
+import { USER_ROLE } from './auth.constant';
 
 export interface TUser {
   name: string;
@@ -20,3 +21,5 @@ export type TLogin = {
   email: string;
   password: string;
 };
+
+export type TUserRole = keyof typeof USER_ROLE;
