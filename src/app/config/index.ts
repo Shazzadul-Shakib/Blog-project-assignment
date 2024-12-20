@@ -8,4 +8,5 @@ export default {
   database_url: process.env.MONGO_URI,
   NODE_ENV: process.env.NODE_ENV,
   salt_round: process.env.SALT_ROUND,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
 };

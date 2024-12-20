@@ -3,6 +3,8 @@ import { TLogin, TUser } from './auth.interface';
 import { User } from './auth.model';
 import httpStatus from 'http-status-codes';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import config from '../../config';
 
 // ----- register user ----- //
 const registerUserService = async (payload: TUser) => {
@@ -31,6 +33,20 @@ const loginUserService = async (payload: TLogin) => {
   if (!(await User.isPasswordMatched(payload?.password, user?.password))) {
     throw new AppError(httpStatus.UNAUTHORIZED, 'Invalid credentials');
   }
+
+  // ----- create token ----- //
+  const jwtPayload = {
+    email: user?.email,
+    role: user?.role,
+  };
+
+  const accessToken = jwt.sign(
+    jwtPayload,
+    config.access_token_secret as string,
+    { expiresIn: '10d' },
+  );
+
+  return { token: accessToken };
 };
 
 // ----- export auth services ----- //
