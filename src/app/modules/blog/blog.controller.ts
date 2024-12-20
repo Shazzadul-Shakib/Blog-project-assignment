@@ -25,9 +25,8 @@ const getAllBlogs = CatchAsync(async (req, res) => {
   });
 });
 
-
 // ----- export blog controllers ----- //
 export const blogControllers = {
-    creteBlog,
-    getAllBlogs
-}
+  creteBlog,
+  getAllBlogs,
+};

@@ -2,7 +2,6 @@ import AppError from '../../errorHandlers/AppError';
 import { TLogin, TUser } from './auth.interface';
 import { User } from './auth.model';
 import httpStatus from 'http-status-codes';
-import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import config from '../../config';
 
