@@ -9,6 +9,7 @@ export const blogRoutes = Router();
 
 blogRoutes.post(
   '/',
+  authGuard(USER_ROLE.user),
   validateRequest({ body: blogValidationSchema }),
   blogControllers.creteBlog,
 );

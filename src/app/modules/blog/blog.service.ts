@@ -1,9 +1,15 @@
+import { JwtPayload } from 'jsonwebtoken';
+import { TUser } from '../auth/auth.interface';
 import { TBlog } from './blog.interface';
 import { Blog } from './blog.model';
 
 // ----- create blog ----- //
-const createBlogService = async (payload: TBlog) => {
-  const result = await Blog.create(payload);
+const createBlogService = async (payload: TBlog, user: JwtPayload) => {
+  const newPayload = { ...payload, author: user?._id };
+  const result = (await Blog.create(newPayload)).populate(
+    'author',
+    '_id name email',
+  );
   return result;
 };
 

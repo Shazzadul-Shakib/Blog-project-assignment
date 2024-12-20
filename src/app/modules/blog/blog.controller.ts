@@ -5,7 +5,7 @@ import httpStatus from 'http-status-codes';
 
 // ----- create blog -----//
 const creteBlog = CatchAsync(async (req, res) => {
-  const result = await blogServices.createBlogService(req.body);
+  const result = await blogServices.createBlogService(req.body,req.user);
   SendResponse(res, {
     success: true,
     message: 'Blog created successfully',
