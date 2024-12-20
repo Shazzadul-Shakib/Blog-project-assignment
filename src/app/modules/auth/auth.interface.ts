@@ -16,6 +16,7 @@ export interface UserModel extends Model<TUser> {
     hashedPassword: string,
   ): Promise<boolean>;
   isUserExistsByEmail(email: string): Promise<TUser>;
+  isUserExistsById(id: string): Promise<TUser>;
 }
 
 export type TLogin = {
