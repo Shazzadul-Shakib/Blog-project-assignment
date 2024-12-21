@@ -49,6 +49,12 @@ class QueryBuilder<T> {
 
     return this;
   }
+
+  // ----- populate ----- //
+  populate() {
+    this.queryModel = this.queryModel.populate('author', '_id name email');
+    return this;
+  }
 }
 
 export default QueryBuilder;

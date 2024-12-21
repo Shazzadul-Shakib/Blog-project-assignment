@@ -10,11 +10,12 @@ import QueryBuilder from '../../builder/QueryBuilder';
 // ----- create blog ----- //
 const createBlogService = async (payload: TBlog, user: JwtPayload) => {
   const newPayload = { ...payload, author: user?._id };
-  const result = (await Blog.create(newPayload)).populate(
-    'author',
-    '_id name email',
-  );
-  return result;
+
+  const result = await (
+    await Blog.create(newPayload)
+  ).populate('author', '_id name email');
+
+  return formatBlogResponse(result);
 };
 
 // ----- get all blogs ----- //
@@ -24,7 +25,8 @@ const getAllBlogService = async (query: Record<string, unknown>) => {
   const blogQuery = new QueryBuilder(Blog.find(), query)
     .search(blogSearchableFields)
     .filter()
-    .sort();
+    .sort()
+    .populate();
 
   const result = await blogQuery.queryModel;
   //  ----- if filtered data is empty ----- //

@@ -19,7 +19,7 @@ const getAllBlogs = CatchAsync(async (req, res) => {
   const result = await blogServices.getAllBlogService(req.query);
   SendResponse(res, {
     success: true,
-    message: 'Blogs retrived successfully',
+    message: 'Blogs fetched successfully',
     statusCode: httpStatus.OK,
     data: result,
   });

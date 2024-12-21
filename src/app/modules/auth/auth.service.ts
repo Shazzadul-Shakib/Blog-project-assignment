@@ -21,7 +21,7 @@ const loginUserService = async (payload: TLogin) => {
   // ----- checking if user exist ----- //
   const user = await User.isUserExistsByEmail(payload.email);
   if (!user) {
-    throw new AppError(httpStatus.NOT_FOUND, 'Invalid credentials');
+    throw new AppError(httpStatus.BAD_REQUEST, 'Invalid credentials');
   }
 
   // ----- checking if user is blocked ----- //
