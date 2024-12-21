@@ -4,7 +4,7 @@
 
 ## **🚀 Live URL**
 
-Visit the live application: [Blog-project-app API](https://book-shop-app-shazzadul-shakib.vercel.app)
+Visit the live application: [Blog-project-app API](https://blog-project-assignment.vercel.app)
 
 ---
 
@@ -125,7 +125,7 @@ Follow these steps to set up the application on your local machine:
 
 ### Base URL:
 
-`https://book-shop-app-shazzadul-shakib.vercel.app`
+`https://blog-project-assignment.vercel.app`
 
 ---
 
