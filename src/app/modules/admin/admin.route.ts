@@ -5,7 +5,7 @@ import { USER_ROLE } from '../auth/auth.constant';
 
 export const adminRoutes = Router();
 
-adminRoutes.post(
+adminRoutes.patch(
   '/users/:userId/block',
   authGuard(USER_ROLE.admin),
   adminControllers.blockUser,
