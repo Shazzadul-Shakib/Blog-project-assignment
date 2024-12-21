@@ -1,5 +1,4 @@
 import { JwtPayload } from 'jsonwebtoken';
-import { TUser } from '../auth/auth.interface';
 import { TBlog } from './blog.interface';
 import { Blog } from './blog.model';
 import AppError from '../../errorHandlers/AppError';
@@ -48,9 +47,7 @@ const updateBlogService = async (payload: Partial<TBlog>, id: string) => {
     new: true,
   }).populate('author', '_id name email');
 
-  const updatedBlog = formatBlogResponse(result);
-
-  return updatedBlog;
+  return formatBlogResponse(result);
 };
 
 // ----- delete blog ----- //

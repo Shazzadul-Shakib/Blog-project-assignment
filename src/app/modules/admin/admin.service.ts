@@ -33,7 +33,7 @@ const blockUserService = async (userId: string) => {
 // ----- delete blog ----- //
 const deleteBlogService = async (blogId: string) => {
   const blog = await Blog.isBlogExistsById(blogId);
-  
+
   //   ----- check if blog exists ----- //
   if (!blog) {
     throw new AppError(httpStatus.NOT_FOUND, 'Blog not found');

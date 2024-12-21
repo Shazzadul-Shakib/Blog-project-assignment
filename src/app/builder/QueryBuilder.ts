@@ -8,7 +8,7 @@ class QueryBuilder<T> {
     this.queryModel = modelQuery;
     this.query = query;
   }
-  //   ----- search ----- //
+  // ----- search ----- //
   search(searchableFields: string[]) {
     const search = this?.query?.search;
     if (search) {
@@ -27,7 +27,7 @@ class QueryBuilder<T> {
     return this;
   }
 
-  //   ----- filter ----- //
+  // ----- filter ----- //
   filter() {
     const queryObj = { ...this.query };
     const excludeFields = ['search', 'sortBy', 'sortOrder'];
@@ -37,7 +37,7 @@ class QueryBuilder<T> {
     return this;
   }
 
-  //   ----- sort ----- //
+  // ----- sort ----- //
   sort() {
     let sortBy = this.query.sortBy || 'createdAt';
     let sortOrder = this.query.sortOrder || 'desc';

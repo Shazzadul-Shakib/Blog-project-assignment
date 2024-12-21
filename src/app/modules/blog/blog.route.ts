@@ -17,11 +17,7 @@ blogRoutes.post(
   validateRequest({ body: blogValidationSchema }),
   blogControllers.createBlog,
 );
-blogRoutes.get(
-  '/',
-  // authGuard(USER_ROLE.user, USER_ROLE.admin),
-  blogControllers.getAllBlogs,
-);
+blogRoutes.get('/', blogControllers.getAllBlogs);
 blogRoutes.patch(
   '/:id',
   authGuard(USER_ROLE.user),

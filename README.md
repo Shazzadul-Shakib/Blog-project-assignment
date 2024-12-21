@@ -312,6 +312,7 @@ Follow these steps to set up the application on your local machine:
 }
 
 ```
+
 ### **3. Delete Blog**
 
 - **Endpoint:** **`/api/blogs/:id`**
@@ -330,17 +331,17 @@ Follow these steps to set up the application on your local machine:
 ```
 
 ---
+
 ### **4. Get All Blogs (Public)**
+
 **Endpoint:** **`/api/blogs`**
 
 **Query Parameters**:
 
-*   `search`: Search blogs by title or content (e.g., `search=blogtitle`).
-*   `sortBy`: Sort blogs by specific fields such as `createdAt` or `title` (e.g., `sortBy=title`).
-*   `sortOrder`: Defines the sorting order. Accepts values `asc` (ascending) or `desc` (descending). (e.g., `sortOrder=desc`).
-*   `filter`: Filter blogs by author ID (e.g., `author=authorId`).
-
-  
+- `search`: Search blogs by title or content (e.g., `search=blogtitle`).
+- `sortBy`: Sort blogs by specific fields such as `createdAt` or `title` (e.g., `sortBy=title`).
+- `sortOrder`: Defines the sorting order. Accepts values `asc` (ascending) or `desc` (descending). (e.g., `sortOrder=desc`).
+- `filter`: Filter blogs by author ID (e.g., `author=authorId`).
 
 **Example Request URL**:
 
@@ -350,16 +351,14 @@ Follow these steps to set up the application on your local machine:
 
 In this example:
 
-*   `search=technology`: Filters blogs containing the term "technology" in the title or content.
-*   `sortBy=createdAt`: Sorts the blogs by the `createdAt` field.
-*   `sortOrder=desc`: Sorts in descending order (newest blogs first).
-*   `filter=60b8f42f9c2a3c9b7cbd4f18`: Filters blogs authored by the user with the given `authorId`.
-
-  
+- `search=technology`: Filters blogs containing the term "technology" in the title or content.
+- `sortBy=createdAt`: Sorts the blogs by the `createdAt` field.
+- `sortOrder=desc`: Sorts in descending order (newest blogs first).
+- `filter=60b8f42f9c2a3c9b7cbd4f18`: Filters blogs authored by the user with the given `authorId`.
 
 **Response:**
 
-*   **Success (200):**
+- **Success (200):**
 
 ```json
 {
@@ -378,7 +377,7 @@ In this example:
 }
 ```
 
-###   
+###
 
 ### **Admin Actions**
 
@@ -392,7 +391,7 @@ In this example:
 
 **Response:**
 
-*   **Success (200):**
+- **Success (200):**
 
 ```json
 {
@@ -402,7 +401,7 @@ In this example:
 }
 ```
 
-####   
+####
 
 #### 3.2 Delete Blog
 
@@ -414,7 +413,7 @@ In this example:
 
 **Response:**
 
-*   **Success (200):**
+- **Success (200):**
 
 ```json
 {
@@ -424,6 +423,4 @@ In this example:
 }
 ```
 
-* * *
-
-  
+---
