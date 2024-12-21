@@ -19,7 +19,7 @@ blogRoutes.post(
 );
 blogRoutes.get(
   '/',
-  authGuard(USER_ROLE.user, USER_ROLE.admin),
+  // authGuard(USER_ROLE.user, USER_ROLE.admin),
   blogControllers.getAllBlogs,
 );
 blogRoutes.patch(

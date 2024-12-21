@@ -5,6 +5,7 @@ import { Blog } from './blog.model';
 import AppError from '../../errorHandlers/AppError';
 import { formatBlogResponse } from '../../helper.ts/blogResponse';
 import httpStatus from 'http-status-codes';
+import QueryBuilder from '../../builder/QueryBuilder';
 
 // ----- create blog ----- //
 const createBlogService = async (payload: TBlog, user: JwtPayload) => {
@@ -17,8 +18,20 @@ const createBlogService = async (payload: TBlog, user: JwtPayload) => {
 };
 
 // ----- get all blogs ----- //
-const getAllBlogService = async () => {
-  const result = await Blog.find();
+const getAllBlogService = async (query: Record<string, unknown>) => {
+  const blogSearchableFields = ['title', 'content'];
+
+  const blogQuery = new QueryBuilder(Blog.find(), query)
+    .search(blogSearchableFields)
+    .filter()
+    .sort();
+
+  const result = await blogQuery.queryModel;
+  //  ----- if filtered data is empty ----- //
+  if (result.length === 0) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Blog not found');
+  }
+
   return result;
 };
 
